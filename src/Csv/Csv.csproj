@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>Majenka.Csv</PackageId>
+    <Company>Majenka</Company>
+    <Authors>Majenka</Authors>
+    <Version>1.0.1</Version>
+    <PackageDescription>Simple csv reader for dotnet core</PackageDescription>
+    <RepositoryUrl>https://github.com/majenka/csv</RepositoryUrl>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>Majenka.Csv</AssemblyName>
+    <RootNamespace>Majenka.Csv</RootNamespace>
+    <Nullable>enable</Nullable>
+    <WarningsAsErrors>nullable</WarningsAsErrors>
+  </PropertyGroup>
+
+</Project>
