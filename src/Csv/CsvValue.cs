@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +33,9 @@ namespace Majenka.Csv
 
         public bool? ToBoolean()
         {
-            return string.IsNullOrEmpty(value) ? null : Convert.ToBoolean(value);
+            return string.IsNullOrEmpty(value) ? null : 
+                value.Equals("y", StringComparison.OrdinalIgnoreCase) ? true :
+                Convert.ToBoolean(value);
         }
                 
         public char? ToChar()
@@ -40,9 +43,12 @@ namespace Majenka.Csv
             return string.IsNullOrEmpty(value) ? null : Convert.ToChar(value);
         }
 
-        public DateTime? ToDateTime()
+        public DateTime? ToDateTime(string? format = null, CultureInfo? cultureInfo = null)
         {
-            return string.IsNullOrEmpty(value) ? null : Convert.ToDateTime(value);
+            return string.IsNullOrEmpty(value) ? null :
+                format == null ?
+                Convert.ToDateTime(value) :
+                DateTime.ParseExact(value, format, cultureInfo ?? CultureInfo.CurrentCulture);
         }
 
         public float? ToFloat()
