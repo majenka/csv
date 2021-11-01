@@ -137,7 +137,7 @@ namespace Csv.Test
                         Assert.AreEqual(studyType, "Modeling");
                         Assert.AreEqual(factors, "self-isolation of symptomatic cases");
                         Assert.AreEqual(influential, true);
-                        Assert.AreEqual(excerpt, "Under this scenario, total expected number of cumulative case fatalities is 671,596.\nWhile the self-isolation strategy (Scenario 2) yielded approximately half as many case fatalities as the no intervention strategy, this showed the second highest number of cumulative case fatalities at 341,359.");
+                        Assert.AreEqual(excerpt, "Under this scenario, total expected number of cumulative case fatalities is 671,596.\r\nWhile the self-isolation strategy (Scenario 2) yielded approximately half as many case fatalities as the no intervention strategy, this showed the second highest number of cumulative case fatalities at 341,359.");
                         Assert.AreEqual(measureofEvidence, "Countries: Pakistan; Timeline: beginning on April 5th, 2020 run for one calendar year");
                         Assert.AreEqual(addedOn, "5/28/20");
                     }
