@@ -147,5 +147,48 @@ namespace Csv.Test
                 Assert.IsNull(row);
             }
         }
+
+        [Test]
+        public void TestMalformedBad()
+        {
+            using (var reader = new CsvReader("../../../SampleMalformedBad.csv"))
+            {
+                CsvRow row;
+
+                row = reader.ReadRow();
+                Assert.NotNull(row);
+                Assert.AreNotEqual("Your lamp has an imprinted code that identifies \"the important\"\" features you need to select a replacement. A complete explanation appears below.", row[2].ToString());
+
+                row = reader.ReadRow();
+                Assert.Null(row);
+            }
+        }
+
+        [Test]
+        public void TestMalformedOK()
+        {
+            using (var reader = new CsvReader("../../../SampleMalformedOK.csv"))
+            {
+                CsvRow row;
+
+                row = reader.ReadRow();
+                Assert.NotNull(row);
+                Assert.AreNotEqual("Your lamp has an imprinted code that identifies \"\"the important\"\" features you need to select a replacement. A complete explanation appears below.", row[2].ToString());
+
+                row = reader.ReadRow();
+                Assert.NotNull(row);
+                Assert.AreEqual("P2", row[0].ToString());
+
+                // read empty rows
+                for (var i = 0; i < 4; i++)
+                {
+                    row = reader.ReadRow();
+                    Assert.NotNull(row);
+                }
+
+                row = reader.ReadRow();
+                Assert.Null(row);
+            }
+        }
     }
 }
