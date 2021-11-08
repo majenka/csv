@@ -93,10 +93,7 @@ namespace Majenka.Csv
                 // End of row?
                 if (!inText && c == lineFeed)
                 {
-                    if (value != null)
-                    {
-                        values.Add(value);
-                    }
+                    values.Add(value ?? string.Empty);
 
                     // Header row?
                     if (firstRowHeader && header == null)
