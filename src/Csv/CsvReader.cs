@@ -74,9 +74,10 @@ namespace Majenka.Csv
             {
                 c = (char)i;
 
-                // Was last delimiter an end of text section or an escape?
+                // Peek indicates the last char was a delimeter and we were in a text field
                 if (peek)
                 {
+                    // Was the last delimiter an end of text field or an escape?
                     if (c == textDelimiter)
                     {
                         value += c;
