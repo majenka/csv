@@ -4,7 +4,7 @@
     <PackageId>Majenka.Csv</PackageId>
     <Company>Majenka</Company>
     <Authors>Majenka</Authors>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <PackageDescription>Simple csv reader for dotnet core</PackageDescription>
     <RepositoryUrl>https://github.com/majenka/csv</RepositoryUrl>
     <TargetFramework>net5.0</TargetFramework>

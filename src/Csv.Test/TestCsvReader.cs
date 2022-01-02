@@ -13,6 +13,37 @@ namespace Csv.Test
         }
 
         [Test]
+        public void TestText()
+        {
+            var lines = new string[] { "Car,Miles,Year", "Ford,\"77,000\",2006", "Audi,\"45,000\",2012" };
+
+            using (var reader = new CsvReader(lines))
+            {
+                CsvRow row = reader.ReadRow();
+                Assert.NotNull(row);
+
+                var miles = row["Miles"].ToDouble();
+                var year = row["Year"].ToInt();
+
+                Assert.AreEqual(77000, miles);
+                Assert.AreEqual(2006, year);
+
+                row = reader.ReadRow();
+                Assert.NotNull(row);
+                
+                miles = row["Miles"].ToDouble();
+                year = row["Year"].ToInt();
+
+                Assert.AreEqual(45000, miles);
+                Assert.AreEqual(2012, year);
+
+                row = reader.ReadRow();
+                Assert.Null(row);
+            }
+        }
+
+        
+        [Test]
         public void TestSample100File()
         {
             using (var reader = new CsvReader("../../../Sample100.csv"))
@@ -52,6 +83,33 @@ namespace Csv.Test
 
                 leave = row["Leave"].ToInt();
                 Assert.AreEqual(1, leave);
+                Assert.AreEqual(1, row[4].ToInt());
+            }
+        }
+
+        [Test]
+        public void TestSample100NoHeaderFile()
+        {
+            using (var reader = new CsvReader("../../../Sample100NoHeader.csv", firstRowHeader:false))
+            {
+                CsvRow row = reader.ReadRow();
+                Assert.NotNull(row);
+
+                Assert.AreEqual(9788189999599, row[0].ToLong());
+                Assert.AreEqual(0, row[4].ToInt());
+
+                // skip 20 rows
+                for (int i = 0; i < 20; i++)
+                {
+                    row = reader.ReadRow();
+                    Assert.NotNull(row);
+                }
+
+                Assert.AreEqual(9789384850753, row[0].ToLong());
+
+                Assert.AreEqual("BHAGYA KE RAHASYA (HINDI) SECRET OF DESTINY", row[1].ToString());
+                Assert.AreEqual("DEEP TRIVEDI", row[2].ToString());
+                Assert.AreEqual("AATMAN INNOVATIONS PVT LTD", row[3].ToString());
                 Assert.AreEqual(1, row[4].ToInt());
             }
         }

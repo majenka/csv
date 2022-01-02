@@ -35,12 +35,32 @@ namespace Majenka.Csv
             }
         }
 
+        public CsvReader(string filename, Encoding encoding, char delimiter = ',', char textDelimiter = '"', bool firstRowHeader = true)
+        {
+            this.firstRowHeader = firstRowHeader;
+            this.delimiter = delimiter;
+            this.textDelimiter = textDelimiter;
+
+            reader = new StreamReader(filename, encoding);
+        }
+
         public CsvReader(Stream stream, char delimiter = ',', char textDelimiter = '"', bool firstRowHeader = true)
         {
             this.firstRowHeader = firstRowHeader;
             this.delimiter = delimiter;
             this.textDelimiter = textDelimiter;
 
+            reader = new StreamReader(stream);
+        }
+
+        public CsvReader(string[] lines, char delimiter = ',', char textDelimiter = '"', bool firstRowHeader = true)
+        {
+            this.firstRowHeader = firstRowHeader;
+            this.delimiter = delimiter;
+            this.textDelimiter = textDelimiter;
+
+            var byteArray = Encoding.Default.GetBytes(string.Join('\n', lines));
+            var stream = new MemoryStream(byteArray);
             reader = new StreamReader(stream);
         }
 
