@@ -2,11 +2,11 @@
 CSV reader
 ----------
 
-Very basic CSV reader/parser for dotnet core (C#).
+CSV reader/parser for dotnet core (C#).
 Capable of handling large files since it uses a StreamReader to read a char at a time.
 Handles escaped characters and paragraph text (with carriage returns and line feed chars).
 
-Written for a specific purpose and is far from polished code. Feel free to use, copy and adapt it.
+Feel free to use, copy and adapt it.
 
 Data used in tests:
 
