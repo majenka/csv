@@ -16,7 +16,7 @@ SampleLongText.csv  = Effectiveness of case isolation_isolation of exposed indiv
 
 Example 1 - reading a string array
 ----------------------------------
-{{    
+
     var lines = new string[] { "Car,Miles,Year", "Ford,\"77,000\",2006", "Audi,\"45,000\",2012" };
     
     using (var reader = new CsvReader(lines))
@@ -33,11 +33,11 @@ Example 1 - reading a string array
             Console.WriteLine($"{car}\t{year}\t{miles}");
         }
     }
-}}
+
 
 Example 2 - reading a file.
 ---------------------------
-{{
+
     var filename = "cars.csv";
     
     using (var reader = new CsvReader(filename)
@@ -55,4 +55,3 @@ Example 2 - reading a file.
             Console.WriteLine($"{car}\t{year}\t{miles}");
         }
     }
-}}
