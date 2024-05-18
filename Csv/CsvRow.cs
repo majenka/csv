@@ -14,7 +14,7 @@ namespace Majenka.Csv
 
         public CsvValue[] Values { get; }
 
-        public CsvValue? this[string columnName]
+        public CsvValue this[string columnName]
         {
             get
             {
@@ -32,7 +32,7 @@ namespace Majenka.Csv
 
                 if (index > Values.Length - 1)
                 {
-                    return null;
+                    return new CsvValue(string.Empty);
                 }
 
                 return Values[index];
